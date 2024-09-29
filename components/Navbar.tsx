@@ -2,7 +2,7 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className="w-full h-[72px] px-16 bg-white border-b-2 border-black flex-col justify-center items-center inline-flex">
+    <div className="w-full h-[72px] px-16 bg-white border-b-2 border-black flex-col justify-center items-center fixed inline-flex">
     <div className="self-stretch justify-between items-center inline-flex">
         <div className="w-20 h-10 justify-center items-center flex">
             <div className="w-[63px] h-[27px] pl-[5px] pr-[5.50px] justify-center items-center flex">
