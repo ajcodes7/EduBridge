@@ -1,8 +1,8 @@
 import React from 'react'
-
+import image from 'next/image'
 function Hero() {
   return (
-    <div className="w-full h-[900px] bg-black/50 justify-center items-center inline-flex">
+    <div className="w-full h-[900px] bg-gradient-to-t from-primary via-secondary to-teritiary justify-center items-center inline-flex">
     <div className="w-[768px] flex-col justify-start items-center gap-8 inline-flex">
         <div className="self-stretch h-[239px] flex-col justify-start items-center gap-6 flex">
             <div className="self-stretch text-center text-white text-[56px] font-bold font-['Roboto'] leading-[67.20px]">Medium length hero heading goes here</div>
