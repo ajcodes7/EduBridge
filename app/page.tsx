@@ -1,5 +1,6 @@
 // pages/index.tsx
 "use client"; // This line makes the component a Client Component
+import "../styles/home.css";
 
 import React from "react";
 import Image from "next/image";

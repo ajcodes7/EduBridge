@@ -83,7 +83,6 @@ const LoginPage: React.FC = () => {
             </button>
           </div>
         </form>
-        <button onClick={apiCall}>API</button>
       </div>
     </div>
   );
