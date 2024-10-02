@@ -1,35 +1,35 @@
 // pages/login.tsx
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const LoginPage: React.FC = () => {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginUser = (event: React.FormEvent) => {
     event.preventDefault(); // Prevent form submission
 
     // Retrieve user records from localStorage
-    const userRecords = JSON.parse(localStorage.getItem('users') || '[]');
+    const userRecords = JSON.parse(localStorage.getItem("users") || "[]");
 
     // Check if there is a user with matching credentials
     const isUserValid = userRecords.some(
-      (user: { userName: string; psw: string }) => 
-        user.userName === userName && user.psw === password
+      (user: { userName: string; psw: string }) =>
+        user.userName === userName && user.psw === password,
     );
 
     if (isUserValid) {
-      alert('Login successful');
+      alert("Login successful");
       const currentUser = userRecords.find(
-        (user: { userName: string }) => user.userName === userName
+        (user: { userName: string }) => user.userName === userName,
       );
       if (currentUser) {
-        localStorage.setItem('name', currentUser.userName); // Store username
-        localStorage.setItem('email', currentUser.email); // Store email
-        window.location.href = '/design/home'; // Redirect to desired page
+        localStorage.setItem("name", currentUser.userName); // Store username
+        localStorage.setItem("email", currentUser.email); // Store email
+        window.location.href = "/design/home"; // Redirect to desired page
       }
     } else {
-      alert('Login failed'); // Notify if login fails
+      alert("Login failed"); // Notify if login fails
     }
   };
 
@@ -83,6 +83,7 @@ const LoginPage: React.FC = () => {
             </button>
           </div>
         </form>
+        <button onClick={apiCall}>API</button>
       </div>
     </div>
   );
