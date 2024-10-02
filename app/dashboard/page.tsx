@@ -1,327 +1,126 @@
+"use client";
+import Image from "next/image";
 import "../../styles/profile.css";
-import React from "react";
+import React, { useState } from "react";
+import logo from "./../../assets/Logo.png";
+import profilePic1 from "./../../assets/pic-1.jpg";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faBell,
+  faBook,
+  faChalkboardUser,
+  faGraduationCap,
+  faHeadset,
+  faHome,
+  faMicroscope,
+  faQuestion,
+  faStar,
+  faSun,
+  faTimes,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import DHome from "@/components/DHome";
+import DProfile from "@/components/DProfile";
+import DAbout from "@/components/DAbout";
 
 function Profile() {
+  const [menu, setMenu] = useState(false);
+  const [tab, setTab] = useState(0);
   return (
     <>
       <header className="header">
         <section className="flex">
+          <div className="relative w-[70px] h-[70px]">
+            <Image
+              src={logo}
+              alt="EduBridge Logo"
+              fill
+              className="object-cover"
+            />
+          </div>
           <a href="home.html" className="logo">
             {" "}
             EduBridge{" "}
           </a>
           <div className="icons">
-            <div id="menu-btn" className="fas fa-bars"></div>
-            <div id="search-btn" className="fas fa-search"></div>
-            <div id="user-btn" className="fas fa-user"></div>
-            <div id="toggle-btn" className="fas fa-sun"></div>
-            <div id="notification-btn" className="fas fa-bell"></div>
-            <div id="leaderboard-btn" className="fas fa-star"></div>
-          </div>
-
-          <div className="profile">
-            <h3 className="name">
-              <span className="addfullName"></span>
-            </h3>
-            <p className="role">
-              {" "}
-              <span className="addwho"> </span>
-            </p>
-            <a href="profile.html" className="btn">
-              view profile
-            </a>
-            <a href="#l" className="btn">
-              Log out
-            </a>
-          </div>
-          <div className="leaderboard">
-            <ol>
-              <li>john</li>
-              <li>hu</li>
-            </ol>
-          </div>
-          <div className="notification">
-            <ul>
-              <li>notification 1</li>
-              <li>notification 1</li>
-              <li>notification 1</li>
-            </ul>
+            <button onClick={() => setMenu(true)}>
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+            <button>
+              <FontAwesomeIcon icon={faUser} />
+            </button>
+            <button>
+              <FontAwesomeIcon icon={faSun} />
+            </button>
+            <button>
+              <FontAwesomeIcon icon={faBell} />
+            </button>
+            <button>
+              <FontAwesomeIcon icon={faStar} />
+            </button>
           </div>
         </section>
       </header>
 
-      <div className="side-bar">
-        <div id="close-btn">
-          <i className="fas fa-times"></i>
-        </div>
+      <div className={`side-bar ${menu ? "active" : ""}`}>
+        <button onClick={() => setMenu(false)} id="close-btn">
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
 
         <div className="profile">
-          <h3 className="name">
-            <span className="addfullName"></span>
+          <Image src={profilePic1} alt="profile" className="image" />
+          <h3 className="name font-bold">
+            <span>Hamza</span>
           </h3>
           <p className="role">
-            <span className="addwho"></span>
+            <span className="addwho">Your boss Niggah</span>
           </p>
-          <a href="profile.html" className="btn">
+          <button onClick={() => setTab(0)} className="btn">
             view profile
-          </a>
+          </button>
         </div>
 
         <nav className="navbar">
-          <a href="home.html">
-            <i className="fas fa-home"></i>
+          <button id={tab === 1 ? "active" : ""} onClick={() => setTab(1)}>
+            <FontAwesomeIcon icon={faHome} />
             <span>home</span>
-          </a>
-          <a href="about.html">
-            <i className="fas fa-question"></i>
+          </button>
+          <button id={tab === 2 ? "active" : ""} onClick={() => setTab(2)}>
+            <FontAwesomeIcon icon={faQuestion} />
             <span>about</span>
-          </a>
-          <a href="courses.html">
-            <i className="fas fa-graduation-cap"></i>
+          </button>
+          <button id={tab === 3 ? "active" : ""} onClick={() => setTab(3)}>
+            <FontAwesomeIcon icon={faGraduationCap} />
             <span>courses</span>
-          </a>
-          <a href="mentor.html">
-            <i className="fas fa-chalkboard-user"></i>
+          </button>
+          <button id={tab === 4 ? "active" : ""} onClick={() => setTab(4)}>
+            <FontAwesomeIcon icon={faChalkboardUser} />
             <span>mentors</span>
-          </a>
-          <a href="contact.html">
-            <i className="fas fa-headset"></i>
+          </button>
+          <button id={tab === 5 ? "active" : ""} onClick={() => setTab(5)}>
+            <FontAwesomeIcon icon={faHeadset} />
             <span>contact us</span>
-          </a>
-          <a href="#">
-            <i className="fas fa-book"></i>
+          </button>
+          <button id={tab === 6 ? "active" : ""} onClick={() => setTab(6)}>
+            <FontAwesomeIcon icon={faBook} />
             <span>library</span>
-          </a>
-          <a href="#">
-            <i className="fas fa-microscope"></i>
+          </button>
+          <button id={tab === 7 ? "active" : ""} onClick={() => setTab(7)}>
+            <FontAwesomeIcon icon={faMicroscope} />
             <span>research</span>
-          </a>
+          </button>
         </nav>
       </div>
-      <section className="teachers">
-        <h1 className="heading">My mentors</h1>
-
-        <div className="box-container">
-          <div className="box">
-            <div className="tutor">
-              <div>
-                <h3>john deo</h3>
-                <span>developer</span>
-              </div>
-            </div>
-            <p>
-              total playlists : <span>4</span>
-            </p>
-            <p>
-              total videos : <span>18</span>
-            </p>
-            <p>
-              total likes : <span>1208</span>
-            </p>
-            <a href="mentor_profile.html" className="inline-btn">
-              view profile
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div>
-                <h3>john deo</h3>
-                <span>developer</span>
-              </div>
-            </div>
-            <p>
-              total playlists : <span>4</span>
-            </p>
-            <p>
-              total videos : <span>18</span>
-            </p>
-            <p>
-              total likes : <span>1208</span>
-            </p>
-            <a href="mentor_profile.html" className="inline-btn">
-              view profile
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div>
-                <h3>john deo</h3>
-                <span>developer</span>
-              </div>
-            </div>
-            <p>
-              total playlists : <span>4</span>
-            </p>
-            <p>
-              total videos : <span>18</span>
-            </p>
-            <p>
-              total likes : <span>1208</span>
-            </p>
-            <a href="mentor_profile.html" className="inline-btn">
-              view profile
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div>
-                <h3>john deo</h3>
-                <span>developer</span>
-              </div>
-            </div>
-            <p>
-              total playlists : <span>4</span>
-            </p>
-            <p>
-              total videos : <span>18</span>
-            </p>
-            <p>
-              total likes : <span>1208</span>
-            </p>
-            <a href="mentor_profile.html" className="inline-btn">
-              view profile
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div>
-                <h3>john deo</h3>
-                <span>developer</span>
-              </div>
-            </div>
-            <p>
-              total playlists : <span>4</span>
-            </p>
-            <p>
-              total videos : <span>18</span>
-            </p>
-            <p>
-              total likes : <span>1208</span>
-            </p>
-            <a href="mentor_profile.html" className="inline-btn">
-              view profile
-            </a>
-          </div>
-
-          <a href="mentor.html" className="inline-btn">
-            Show more{" "}
-          </a>
-        </div>
-      </section>
-
-      <section className="courses">
-        <h1 className="heading">our courses</h1>
-
-        <div className="box-container">
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete HTML tutorial</h3>
-            <a href="playlist.html" className="inline-btn">
-              view playlist
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete CSS tutorial</h3>
-            <a href="playlist.html" className="inline-btn">
-              view playlist
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete JS tutorial</h3>
-            <a href="playlist.html" className="inline-btn">
-              view playlist
-            </a>
-          </div>
-        </div>
-
-        <div className="more-btn">
-          <a href="courses.html" className="inline-option-btn">
-            view all courses
-          </a>
-        </div>
-      </section>
-      <section className="courses">
-        <h1 className="heading">Opportunity alert</h1>
-
-        <div className="">
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <h3 className="title">complete HTML tutorial</h3>
-            <a href="#" className="inline-btn">
-              view more
-            </a>
-          </div>
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <h3 className="title">complete CSS tutorial</h3>
-            <a href="#" className="inline-btn">
-              view more
-            </a>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-
-            <h3 className="title">complete JS tutorial</h3>
-            <a href="#" className="inline-btn">
-              view more
-            </a>
-          </div>
-        </div>
-
-        <div className="more-btn">
-          <a href="#" className="inline-option-btn">
-            view all opportunities
-          </a>
-        </div>
-      </section>
+      {tab === 0 && <DProfile />}
+      {tab === 1 && <DHome />}
+      {tab === 2 && <DAbout />}
+      {tab === 3 && <div className="home-grid"></div>}
+      {tab === 4 && <div className="home-grid"></div>}
+      {tab === 5 && <div className="home-grid"></div>}
+      {tab === 6 && <div className="home-grid"></div>}
+      {tab === 7 && <div className="home-grid"></div>}
       <footer className="footer">
         &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights
         reserved!
